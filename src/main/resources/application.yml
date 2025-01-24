@@ -1,2 +1,5 @@
 server:
   port: 8080
+
+visual:
+  server: http://localhost:8081

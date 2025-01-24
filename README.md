@@ -6,6 +6,7 @@
 
 ### 快速开始
 - 下载工程代码文件
+- 修改目录`src/main/resources/application.yml`下的配置`visual.server`的值。详情见：https://www.yuque.com/geekioe/tuyaiot/kazd2uinmf6tygh8
 - 运行启动类：com.tuya.visual.consumer.StartUp.main
 - 浏览器访问：http://localhost:8080/visual/token/get
   返回结果如下所示  

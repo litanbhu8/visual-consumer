@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,6 +25,9 @@ import java.util.List;
 @Slf4j
 @RestController
 public class MainController {
+
+    @Value("${visual.server}")
+    private String visualServer;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -51,8 +55,8 @@ public class MainController {
         String jsonBody = params.toJSONString();
         // 包装请求体和请求头
         HttpEntity<String> requestEntity = new HttpEntity<>(jsonBody, headers);
-        // 发送 POST 请求
-        String url = "http://localhost:8081/v1.0/openapi/visual/d/user/login";
+        // 发送 POST 请求, 请求地址改成对应的域名地址
+        String url = visualServer + "/v1.0/openapi/visual/d/user/login";
         ResponseEntity<String> response = restTemplate.postForEntity(url, requestEntity, String.class);
 
         // 处理响应
